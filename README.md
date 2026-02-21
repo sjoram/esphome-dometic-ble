@@ -10,6 +10,8 @@ This project provides a fully working ESPHome configuration that:
 - Supports fan modes, sleep preset, and light brightness
 - Uses retained MQTT state
 
+The project is not fully clean and there are quite a few artifacts left in it from the iterative development. I have left these in purposefully for the most case as they expose selects and other entities that may be useful for somebody that does not want/need the climate entity or want to bother with MQTT!
+
 ---
 
 ## Features
