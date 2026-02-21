@@ -4,11 +4,11 @@ Control a Dometic FreshJet 1700 air conditioner over BLE using ESPHome and expos
 
 This project provides a fully working ESPHome configuration that:
 
-- Connects to the Dometic unit over BLE
+- Connects to a Dometic air conditioning unit over BLE
 - Publishes MQTT Discovery for Home Assistant
 - Exposes a proper Climate entity
 - Supports fan modes, sleep preset, and light brightness
-- Uses retained MQTT state for reliability
+- Uses retained MQTT state
 
 ---
 
@@ -18,7 +18,7 @@ This project provides a fully working ESPHome configuration that:
 - ✅ Fan modes (low / medium / high / turbo / auto)
 - ✅ Sleep preset (only valid in Cool and Heat)
 - ✅ Independent light control (Off / 50% / 100%)
-- ✅ Correct retained MQTT state handling
+- ✅ Retained MQTT state handling
 - ✅ MQTT Discovery compatible
 - ✅ No custom HA integration required
 
@@ -28,18 +28,20 @@ This project provides a fully working ESPHome configuration that:
 
 - ESP32 (tested on ESP32 DevKit)
 - Dometic FreshJet 1700 (BLE version)
-- Home Assistant with MQTT broker enabled
+- Home Assistant with MQTT broker enabled (You will need the latest greatest HA and ESPHome > 2026.2.0)
 
 ---
 
 ## Installation
 
 1. Install ESPHome.
-2. Copy `dometicac.yaml` into your ESPHome config directory.
-3. Create a `secrets.yaml` file.
-4. Adjust your WiFi and MQTT credentials.
-5. Flash the ESP32.
-6. Restart Home Assistant.
+2. Install the MQTT App and configure a user
+3. Copy `dometicac.yaml` into your ESPHome config directory.
+4. Create a `secrets.yaml` file.
+5. Adjust your WiFi and MQTT credentials.
+6. Determine the mac address of your Dometic unit. You can do this using nrf Connect on a phone though I believe iOS will not expose the mac address for some security reasons but Android should!
+7. Flash the ESP32.
+8. Restart Home Assistant.
 
 The Climate entity will appear automatically via MQTT discovery.
 
@@ -95,7 +97,6 @@ All state topics are retained to ensure proper HA startup behaviour.
 
 - Sleep is only valid in **Cooling** and **Heating** modes.
 - If selected in other modes, it automatically resets to `none`.
-- Preset state is immediately corrected without waiting for poll cycle.
 
 ---
 
@@ -114,7 +115,8 @@ Brightness values are automatically snapped to valid levels.
 ## Known Limitations
 
 - Light brightness is restricted to 50% and 100% (device limitation)
-- Tested primarily on FreshJet 1700 BLE variant
+- Tested primarily on FreshJet 1700 BLE variant that has the four operational modes. If you only have cooling you will need to edit as appropriate.
+- Note I could only get a Climate entity exposed by using MQTT. I even tried creating an external component but the new Home Assistant and ESPHome would not allow the BLE nor the climate entity properly. Feel free to suggest a differnt method!
 
 ---
 
@@ -128,3 +130,10 @@ MIT License
 
 This project is not affiliated with or endorsed by Dometic.  
 Use at your own risk.
+
+
+<img width="561" height="573" alt="image" src="https://github.com/user-attachments/assets/085caf8b-fc69-473a-9bc8-3142b9342a56" />
+
+<img width="513" height="68" alt="image" src="https://github.com/user-attachments/assets/be98113c-ae03-45b1-b2e9-d4b56e321134" />
+
+
