@@ -131,9 +131,10 @@ MIT License
 This project is not affiliated with or endorsed by Dometic.  
 Use at your own risk.
 
+---
 
 <img width="561" height="573" alt="image" src="https://github.com/user-attachments/assets/085caf8b-fc69-473a-9bc8-3142b9342a56" />
-
+---
 <img width="513" height="68" alt="image" src="https://github.com/user-attachments/assets/be98113c-ae03-45b1-b2e9-d4b56e321134" />
 
 
