@@ -440,6 +440,10 @@ ble_client:
         - delay: 5s
         - switch.turn_on: poll_switch
 
+binary_sensor:
+  - platform: status
+    name: "Dometic Status"
+
 number:
   - platform: template
     name: "Target AC Temp"
@@ -907,5 +911,6 @@ interval:
   - interval: 30s   # poll every 30 seconds
     then:
       - switch.turn_on: poll_switch
+
 
 
